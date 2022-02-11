@@ -1,7 +1,7 @@
 # Udagram
 
 The udagram application is a simple application that includes all the major components of a Full-Stack web application. I deployed this application to AWS as part of the Udacity Advanced full stack web development Nanodegree. I also used CircleCI for continuous integration and deployment (CI/CD). 
-Link to the app: http://udagram-manar.s3-website-us-east-1.amazonaws.com/home 
+Link to the app: http://udagram-manar.s3-website-us-east-1.amazonaws.com 
 
 ## Getting Started
 
