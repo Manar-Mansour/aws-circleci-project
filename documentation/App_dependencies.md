@@ -1,0 +1,1 @@
+This application uses Angular in the frontend and node.js/express.js in the backend

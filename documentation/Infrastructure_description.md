@@ -1,0 +1,3 @@
+- I used S3 to host the frontend
+- I used Elastic beanstalk to host the API (backend)
+- I used RDS for the database of this project which is postgres
