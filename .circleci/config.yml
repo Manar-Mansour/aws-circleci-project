@@ -8,10 +8,6 @@ orbs:
 #Jobs are groups of commands that we want to run. This is where we will run commands to install, build or deploy our application.
 jobs: 
   build: 
-    filters:
-              branches:
-                only:
-                  - main
     docker: 
       - image: "cimg/base:stable" 
     steps:
@@ -34,10 +30,6 @@ jobs:
           command: |
             npm run backend:build
   test: 
-    filters:
-              branches:
-                only:
-                  - main
     docker: 
       - image: "cimg/base:stable" 
     steps:
@@ -55,10 +47,6 @@ jobs:
           command: |
             npm run e2e
   deploy:
-    filters:
-              branches:
-                only:
-                  - main
     docker: 
       - image: "cimg/base:stable" 
     steps:
@@ -72,4 +60,18 @@ jobs:
           name: Deploy App
           command: |
             npm run frontend:deploy
-    
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - main
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test    
