@@ -13,7 +13,6 @@ jobs:
     steps:
       - checkout 
       - node/install 
-      - browser/install-chrome
       - aws-cli/setup
       - eb/setup
       - run:
