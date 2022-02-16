@@ -1,3 +1,5 @@
+[![Manar-Mansour](https://circleci.com/gh/Manar-Mansour/aws-circleci-project.svg?style=svg)](https://app.circleci.com/pipelines/github/Manar-Mansour/aws-circleci-project/17/workflows/524d244a-c675-41be-9b2e-a5fb585c689d)
+
 # Udagram
 
 The udagram application is a simple application that includes all the major components of a Full-Stack web application. I deployed this application to AWS as part of the Udacity Advanced full stack web development Nanodegree. I also used CircleCI for continuous integration and deployment (CI/CD). 
