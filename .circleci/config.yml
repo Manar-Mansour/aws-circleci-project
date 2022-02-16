@@ -33,6 +33,9 @@ jobs:
     docker: 
       - image: "cimg/base:stable" 
     steps:
+     # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
       - browser/install-chrome
       - run:
           name: Front-End Test
@@ -50,6 +53,9 @@ jobs:
     docker: 
       - image: "cimg/base:stable" 
     steps:
+     # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
       - aws-cli/setup
       - eb/setup
       - run:
