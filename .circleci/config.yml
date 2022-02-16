@@ -13,6 +13,9 @@ jobs:
     steps:
       - checkout 
       - node/install 
+      - browser/install-chrome
+      - aws-cli/setup
+      - eb/setup
       - run:
           name: Front-End Install
           command: |
@@ -29,14 +32,6 @@ jobs:
           name: Back-End Build
           command: |
             npm run backend:build
-  test: 
-    docker: 
-      - image: "cimg/base:stable" 
-    steps:
-     # Reuse the workspace from the build job
-      - attach_workspace:
-          at: .
-      - browser/install-chrome
       - run:
           name: Front-End Test
           command: |
@@ -49,15 +44,6 @@ jobs:
           name: End-To-End Test
           command: |
             npm run e2e
-  deploy:
-    docker: 
-      - image: "cimg/base:stable" 
-    steps:
-     # Reuse the workspace from the build job
-      - attach_workspace:
-          at: .
-      - aws-cli/setup
-      - eb/setup
       - run:
           name: Deploy API
           command: |
@@ -75,9 +61,3 @@ workflows:
             branches:
               only:
                 - main
-      - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test    
