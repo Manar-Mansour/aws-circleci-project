@@ -4,16 +4,19 @@ orbs:
   node: circleci/node@5.0.0 #using the node configuration orb for the project
   aws-cli: circleci/aws-cli@2.0.6 #using aws cli orb
   eb: circleci/aws-elastic-beanstalk@2.0.1 #using the elastic beanstalk orb
+  browser: circleci/browser-tools@1.2.4 #install browser for testing purpose
 #Jobs are groups of commands that we want to run. This is where we will run commands to install, build or deploy our application.
 jobs: 
   build: 
+    filters:
+              branches:
+                only:
+                  - main
     docker: 
       - image: "cimg/base:stable" 
     steps:
       - checkout 
       - node/install 
-      - aws-cli/setup
-      - eb/setup
       - run:
           name: Front-End Install
           command: |
@@ -38,3 +41,43 @@ jobs:
           name: Deploy App
           command: |
             npm run frontend:deploy
+  test: 
+    filters:
+              branches:
+                only:
+                  - main
+    docker: 
+      - image: "cimg/base:stable" 
+    steps:
+      - browser/install-chrome
+      - run:
+          name: Front-End Test
+          command: |
+            npm run frontend:test
+      - run:
+          name: Back-End Test
+          command: |
+            npm run backend:test
+      - run:
+          name: End-To-End Test
+          command: |
+            npm run e2e
+  deploy:
+    filters:
+              branches:
+                only:
+                  - main
+    docker: 
+      - image: "cimg/base:stable" 
+    steps:
+      - aws-cli/setup
+      - eb/setup
+      - run:
+          name: Deploy API
+          command: |
+            npm run backend:deploy
+      - run:
+          name: Deploy App
+          command: |
+            npm run frontend:deploy
+    
