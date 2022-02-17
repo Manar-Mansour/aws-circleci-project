@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 [![Manar-Mansour](https://circleci.com/gh/Manar-Mansour/aws-circleci-project.svg?style=svg)](https://app.circleci.com/pipelines/github/Manar-Mansour/aws-circleci-project/20/workflows/8c55567f-864f-43eb-b347-b0969bb49d52/jobs/26) 
+=======
+[![Manar-Mansour](https://circleci.com/gh/Manar-Mansour/aws-circleci-project.svg?style=svg)](https://app.circleci.com/pipelines/github/Manar-Mansour/aws-circleci-project/20/workflows/8c55567f-864f-43eb-b347-b0969bb49d52/jobs/26)
+>>>>>>> 2621eec09c11a1477842a00f9b4046cf7611f7b4
 
 # Udagram
 
